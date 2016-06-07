@@ -1,0 +1,33 @@
+<div class="successful-charges-section">
+  <h1>Successful Charges</h1>
+  <div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Created</th>
+        <th>Amount</th>
+        <th>Currency</th>
+        <th>State</th>
+        <th>Customer</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @customers.each do |customer| %>
+      <% customer.charges.each do |charge| %>
+      <% if charge.state.eql? "successful" %>
+      <tr>
+        <td><%= charge.id %></td>
+        <td><%= charge.created_at %></td>
+        <td><%= charge.amount %></td>
+        <td><%= charge.currency %></td>
+        <td><%= charge.state %></td>
+        <td><%= "#{customer.first_name} #{customer.last_name}" %></td>
+      </tr>
+      <% end %>
+      <% end %>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
+</div>
